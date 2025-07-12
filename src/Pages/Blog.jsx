@@ -8,6 +8,7 @@ import {
   Clock,
   ChevronLeft,
   ChevronRight,
+  Shrub,
 } from "lucide-react";
 import DownArrow from "../components/DownArrow";
 import { useNavigate } from "react-router-dom";
@@ -19,19 +20,20 @@ const BlogPage = () => {
   }, []);
   const [searchTerm, setSearchTerm] = useState("");
   const [mail, setMail] = useState("");
+  const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
 
-  const categories = [
-    "All",
-    "GST",
-    "Income Tax",
-    "Audit",
-    "NGO Services",
-    "International Tax",
-    "Business Registration",
-  ];
+  // const categories = [
+  //   "All",
+  //   "GST",
+  //   "Income Tax",
+  //   "Audit",
+  //   "NGO Services",
+  //   "International Tax",
+  //   "Business Registration",
+  // ];
 
   const blogPosts = [
     {
@@ -177,7 +179,24 @@ const BlogPage = () => {
 
   const featuredPosts = blogPosts.filter((post) => post.featured);
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+    setLoading(true);
+    const resp = await fetch(
+      "https://cawebsite-gg5g.onrender.com/api/subscribe",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: mail }),
+      }
+    );
+
+    const data = await resp.json();
+    setLoading(false);
+
+    console.log("data", data);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -414,6 +433,7 @@ const BlogPage = () => {
               type="email"
               placeholder="Enter your email"
               value={mail}
+              disabled={loading}
               onChange={(e) => {
                 setMail(e.target.value);
               }}
@@ -421,10 +441,11 @@ const BlogPage = () => {
               className="flex-1 px-4 py-3 border-[1px] border-white hover:border-2 text-white rounded-lg focus:outline-none focus:ring-2 "
             />
             <button
+              disabled={loading}
               onClick={handleSubmit}
               className="text-white hover:text-blue-900 px-6 py-3 rounded-lg font-medium hover:bg-white border-2 border-white transition-colors"
             >
-              Subscribe
+              {loading ? "Subscribing" : "Subscribe"}
             </button>
           </div>
         </div>

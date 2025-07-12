@@ -21,18 +21,16 @@ import {
 import CountUp from "react-countup";
 import DownArrow from "../components/DownArrow";
 import { Link, useNavigate } from "react-router-dom";
-import BlogContext from "../Context/Blogs";
-import { services } from "../Store/Data";
+import RecentPost from "../components/RecentPost";
+import FeaturedPost from "../components/FeaturedPost";
+import ContactSection from "../components/ContactSection";
+import WhyUs from "../components/WhyUs";
+import Services from "../components/Services";
 
 const Homepage = () => {
-  const [blogData, setblogData] = useState([]);
-
-  const { blogs, loading } = useContext(BlogContext);
-
   useEffect(() => {
-    setblogData(blogs);
     scrollTo(0, 0);
-  }, []);
+  }, );
 
   const navigate = useNavigate();
 
@@ -63,41 +61,41 @@ const Homepage = () => {
     { suffix: "+", end: "50", label: "Cities Served" },
   ];
 
-  const recentPosts = [
-    {
-      title: "E-Way Bill 2.0: Key Changes in GST E-Way Bill System",
-      excerpt: "Understanding the new changes and what businesses must know",
-      date: "June 2025",
-    },
-    {
-      title: "Supreme Court Allows GST Return Rectification Beyond Due Dates",
-      excerpt:
-        "Key takeaways for businesses from the recent Supreme Court ruling",
-      date: "June 2025",
-    },
-    {
-      title: "Understanding New GST Section 74A: A Complete Analysis",
-      excerpt: "Comprehensive analysis of the impact of new GST provisions",
-      date: "May 2025",
-    },
-  ];
+  // const recentPosts = [
+  //   {
+  //     title: "E-Way Bill 2.0: Key Changes in GST E-Way Bill System",
+  //     excerpt: "Understanding the new changes and what businesses must know",
+  //     date: "June 2025",
+  //   },
+  //   {
+  //     title: "Supreme Court Allows GST Return Rectification Beyond Due Dates",
+  //     excerpt:
+  //       "Key takeaways for businesses from the recent Supreme Court ruling",
+  //     date: "June 2025",
+  //   },
+  //   {
+  //     title: "Understanding New GST Section 74A: A Complete Analysis",
+  //     excerpt: "Comprehensive analysis of the impact of new GST provisions",
+  //     date: "May 2025",
+  //   },
+  // ];
 
-  const featuredPosts = [
-    {
-      title: "TDS on Software License Purchases from Non-Residents",
-      excerpt: "Supreme Court's landmark judgment on software license taxation",
-    },
-    {
-      title: "Understanding Section 54: Capital Gains Tax Exemptions",
-      excerpt:
-        "Guide to capital gains tax exemptions on residential property sales",
-    },
-    {
-      title: "Buy-Back of Shares by Private Companies",
-      excerpt:
-        "Complete guide to share buyback procedures for private companies",
-    },
-  ];
+  // const featuredPosts = [
+  //   {
+  //     title: "TDS on Software License Purchases from Non-Residents",
+  //     excerpt: "Supreme Court's landmark judgment on software license taxation",
+  //   },
+  //   {
+  //     title: "Understanding Section 54: Capital Gains Tax Exemptions",
+  //     excerpt:
+  //       "Guide to capital gains tax exemptions on residential property sales",
+  //   },
+  //   {
+  //     title: "Buy-Back of Shares by Private Companies",
+  //     excerpt:
+  //       "Complete guide to share buyback procedures for private companies",
+  //   },
+  // ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -234,111 +232,10 @@ const Homepage = () => {
       </div>
 
       {/* Services Section */}
-      <div className="bg-gray-100 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Our Chartered Accountancy Services
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive financial and business solutions to meet all your
-              professional needs
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div
-                key={service.id}
-                className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 group"
-              >
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4 group-hover:bg-blue-600 transition-colors duration-300">
-                    <service.icon className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900">
-                    {service.title}
-                  </h3>
-                </div>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {service.description}
-                </p>
-                <div className="space-y-2 mb-6">
-                  {service.features.map((feature, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center text-sm text-gray-600"
-                    >
-                      <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      {feature}
-                    </div>
-                  ))}
-                </div>
-                <Link
-                  to="/blog/1"
-                  target="_blank"
-                  // onClick={() => {
-                  //   navigate("/blog/1");
-                  // }}
-                  className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center"
-                >
-                  Learn More <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <Services />
 
       {/* Why Choose Us Section */}
-      <div className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Nexus?
-            </h2>
-            <p className="text-xl text-gray-600">
-              Trusted by businesses across India for professional excellence
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Award className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                20+ Years Experience
-              </h3>
-              <p className="text-gray-600">
-                Over two decades of industry experience with proven track record
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Users className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Expert Team
-              </h3>
-              <p className="text-gray-600">
-                Skilled professionals including CAs, CS, and Lawyers
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Star className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Total Customer Satisfaction
-              </h3>
-              <p className="text-gray-600">
-                Committed to delivering quality services in professional manner
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <WhyUs />
 
       {/* News & Updates Section */}
       <div className="bg-gray-100 py-20">
@@ -354,98 +251,16 @@ const Homepage = () => {
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Recent Posts */}
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
-                <Calendar className="w-6 h-6 mr-2 text-blue-600" />
-                Recent Posts
-              </h3>
-              <div className="space-y-6">
-                {recentPosts.map((post, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
-                  >
-                    <div className="flex  items-start justify-between">
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900 mb-2">
-                          {post.title}
-                        </h4>
-                        <p className="text-gray-600 text-sm mb-3">
-                          {post.excerpt}
-                        </p>
-                        <span className="text-blue-600 text-sm font-medium">
-                          {post.date}
-                        </span>
-                      </div>
-                      <ChevronRight
-                        onClick={() => navigate("/blog/1")}
-                        className="w-5 h-5 cursor-pointer hover:text-blue-500 text-gray-400 ml-4"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <RecentPost />
 
             {/* Featured Posts */}
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
-                <BookOpen className="w-6 h-6 mr-2 text-green-600" />
-                Featured Posts
-              </h3>
-              <div className="space-y-6">
-                {featuredPosts.map((post, index) => (
-                  <div
-                    onClick={() => navigate("/blog/1")}
-                    key={index}
-                    className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
-                  >
-                    <h4 className="font-semibold text-gray-900 mb-2">
-                      {post.title}
-                    </h4>
-                    <p className="text-gray-600 text-sm mb-3">{post.excerpt}</p>
-                    <button className="text-blue-600 text-sm font-medium hover:text-blue-700 flex items-center">
-                      Read More <ArrowRight className="w-4  h-4 ml-1" />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <FeaturedPost />
           </div>
         </div>
       </div>
 
       {/* Contact CTA Section */}
-      <div className="bg-gradient-to-b from-blue-900 to-indigo-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-xl mb-8 opacity-90">
-            Contact our expert team for professional chartered accountancy
-            services
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <div className="flex items-center justify-center">
-              <Phone className="w-5 h-5 mr-2" />
-              <span>+91-120-4164460</span>
-            </div>
-            <div className="flex items-center justify-center">
-              <Mail className="w-5 h-5 mr-2" />
-              <span>nexus@gmail.com</span>
-            </div>
-          </div>
-          {/* border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-colors duration-300 flex items-center justify-center */}
-          <div className="mt-8">
-            <button
-              onClick={() => {
-                navigate("/contact");
-              }}
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors duration-500"
-            >
-              Contact Us Today
-            </button>
-          </div>
-        </div>
-      </div>
+      <ContactSection />
     </div>
   );
 };

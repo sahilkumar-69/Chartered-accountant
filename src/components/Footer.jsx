@@ -182,18 +182,16 @@ const Footer = () => {
           <p className="text-gray-300">+91-9811255829</p>
 
           <h3 className="font-semibold mt-4 mb-2">Email</h3>
-          <Link to="mailTo:sahilkumar6939@gmail.com" className="text-gray-300">
+          <Link to="mailTo:sahilkumar6939@gmail.com" className="hover:underline text-gray-300">
             nexus@gmail.com
           </Link>
-
-          <h3
-            onClick={() => {
-              navigate("/contact");
-            }}
-            className="font-semibold cursor-pointer hover:underline mt-4 mb-2"
+            <br className="my-1" />
+          <Link
+            to="/contact"
+            className="text-gray-300  cursor-pointer hover:underline mt-4 mb-2"
           >
             Enquiry Form
-          </h3>
+          </Link>
         </div>
       </div>
 
