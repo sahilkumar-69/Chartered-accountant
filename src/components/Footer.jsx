@@ -1,7 +1,11 @@
 import { Award } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import BlogContext from "../Context/Blogs";
+import { useContext } from "react";
 
 const Footer = () => {
+  const { service, loading } = useContext(BlogContext);
+
   const navigate = useNavigate();
   return (
     <footer className="bg-blue-900 text-white text-sm">
@@ -20,7 +24,7 @@ const Footer = () => {
 
         {/* Column 2: Post Categories */}
         <div>
-          <h3 className="font-semibold mb-2">Post Categories</h3>
+          <h3 className="font-semibold mb-2">All pages</h3>
           <ul className="space-y-1 text-gray-300">
             <li
               onClick={() => {
@@ -69,86 +73,19 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold mb-2">Our Services</h3>
           <ul className="space-y-1 text-gray-300">
-            <li
-              onClick={() => {
-                navigate("/blog/1");
-              }}
-              className="hover:underline cursor-pointer hover:text-white "
-            >
-              Audit & Assurance Services
-            </li>
-            <li
-              onClick={() => {
-                navigate("/blog/1");
-              }}
-              className="hover:underline cursor-pointer hover:text-white "
-            >
-              GST Services
-            </li>
-            <li
-              onClick={() => {
-                navigate("/blog/1");
-              }}
-              className="hover:underline cursor-pointer hover:text-white "
-            >
-              Income Tax
-            </li>
-            <li
-              onClick={() => {
-                navigate("/blog/1");
-              }}
-              className="hover:underline cursor-pointer hover:text-white "
-            >
-              Business Setup Services
-            </li>
-            <li
-              onClick={() => {
-                navigate("/blog/1");
-              }}
-              className="hover:underline cursor-pointer hover:text-white "
-            >
-              Business Registrations
-            </li>
-            <li
-              onClick={() => {
-                navigate("/blog/1");
-              }}
-              className="hover:underline cursor-pointer hover:text-white "
-            >
-              International Taxation
-            </li>
-            <li
-              onClick={() => {
-                navigate("/blog/1");
-              }}
-              className="hover:underline cursor-pointer hover:text-white "
-            >
-              NGO Services
-            </li>
-            <li
-              onClick={() => {
-                navigate("/blog/1");
-              }}
-              className="hover:underline cursor-pointer hover:text-white "
-            >
-              Finance Services
-            </li>
-            <li
-              onClick={() => {
-                navigate("/blog/1");
-              }}
-              className="hover:underline cursor-pointer hover:text-white"
-            >
-              Outsourcing Services
-            </li>
-            <li
-              onClick={() => {
-                navigate("/blog/1");
-              }}
-              className="hover:underline cursor-pointer hover:text-white "
-            >
-              RBI Services
-            </li>
+            {service.data &&
+              service.data.length > 0 &&
+              service.data.map((servi) => (
+                <li
+                  key={servi._id}
+                  onClick={() => {
+                    navigate(`/service/${servi._id}`);
+                  }}
+                  className="hover:underline cursor-pointer hover:text-white "
+                >
+                  {servi.serviceName}
+                </li>
+              ))}
           </ul>
         </div>
 
@@ -182,10 +119,13 @@ const Footer = () => {
           <p className="text-gray-300">+91-9811255829</p>
 
           <h3 className="font-semibold mt-4 mb-2">Email</h3>
-          <Link to="mailTo:sahilkumar6939@gmail.com" className="hover:underline text-gray-300">
+          <Link
+            to="mailTo:sahilkumar6939@gmail.com"
+            className="hover:underline text-gray-300"
+          >
             nexus@gmail.com
           </Link>
-            <br className="my-1" />
+          <br className="my-1" />
           <Link
             to="/contact"
             className="text-gray-300  cursor-pointer hover:underline mt-4 mb-2"

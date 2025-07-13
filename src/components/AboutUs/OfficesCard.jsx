@@ -1,8 +1,7 @@
-import { Building2, MapPin, WindArrowDown } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-const OfficesCard = ({ offices }) => {
-  const navigate = useNavigate();
-  // used in AboutUs.jsx and Service.jsx
+import { Building2, MapPin } from "lucide-react";
+import { AboutPageOffices } from "../../Store/Data.js";
+
+const OfficesCard = () => {
   return (
     <div className="bg-white rounded-xl  p-8 mb-16">
       <div className="flex items-center mb-6">
@@ -10,7 +9,7 @@ const OfficesCard = ({ offices }) => {
         <h2 className="text-3xl font-bold text-gray-900">Our Offices</h2>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {offices.map((office, index) => (
+        {AboutPageOffices.map((office, index) => (
           <div
             onClick={() => {
               window.open(office.link);

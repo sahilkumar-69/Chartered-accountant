@@ -53,7 +53,7 @@ const Navbar = () => {
             key={index}
             onClick={() => {
               navigate(item.path);
-              setIsActive(item.name);
+              // setIsActive(item.name);
             }}
             className={`border-b-2 border-transparent hover:text-yellow-400 cursor-pointer`}
           >
@@ -64,8 +64,22 @@ const Navbar = () => {
 
       {/* Social Icons */}
       <div className="hidden md:flex gap-4 text-lg">
-        <i className="fa-brands fa-facebook cursor-pointer hover:text-yellow-400"></i>
-        <i className="fa-brands fa-instagram cursor-pointer hover:text-yellow-400"></i>
+        <Link
+          to={
+            "https://www.instagram.com/devnexussolutions/?igsh=MWFzN2Q0ZmZlc2hk#"
+          }
+          target="_blank"
+        >
+          <i className="fa-brands fa-facebook cursor-pointer hover:text-yellow-400"></i>
+        </Link>
+        <Link
+          to={
+            "https://www.instagram.com/devnexussolutions/?igsh=MWFzN2Q0ZmZlc2hk#"
+          }
+          target="_blank"
+        >
+          <i className="fa-brands fa-instagram cursor-pointer hover:text-yellow-400"></i>
+        </Link>
       </div>
 
       {/* Hamburger Icon (Mobile Only) */}
@@ -94,8 +108,22 @@ const Navbar = () => {
 
           {/* Social icons in mobile */}
           <div className="flex gap-4 text-lg mt-2">
-            <i className="fa-brands fa-facebook cursor-pointer hover:text-yellow-400"></i>
-            <i className="fa-brands fa-instagram cursor-pointer hover:text-yellow-400"></i>
+            <Link
+              to={
+                "https://www.instagram.com/devnexussolutions/?igsh=MWFzN2Q0ZmZlc2hk#"
+              }
+              target="_blank"
+            >
+              <i className="fa-brands fa-facebook cursor-pointer hover:text-yellow-400"></i>
+            </Link>
+            <Link
+              to={
+                "https://www.instagram.com/devnexussolutions/?igsh=MWFzN2Q0ZmZlc2hk#"
+              }
+              target="_blank"
+            >
+              <i className="fa-brands fa-instagram cursor-pointer hover:text-yellow-400"></i>
+            </Link>
           </div>
         </div>
       )}

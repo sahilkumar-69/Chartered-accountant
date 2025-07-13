@@ -1,7 +1,7 @@
 import { ArrowRight, BookOpen } from "lucide-react";
 // import second from 'react'
 // import { useContext } from "react-router-dom";
-import BlogContext from "../Context/Blogs";
+import BlogContext from "../..//Context/Blogs";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +10,9 @@ const FeaturedPost = () => {
   // console.log("featuredPost", featuredPost);
   const navigate = useNavigate();
 
-  if (loading) return <div>loading...</div>;
+  if (loading) return <div className="w-full text-2xl font-semibold text-center">
+        loading...
+      </div>
 
   return (
     <div>
@@ -30,7 +32,7 @@ const FeaturedPost = () => {
               {post.description.slice(0, 160)}...
             </p>
             <button
-            onClick={() => navigate(`/blog/${post._id + " featurepost"}`)}
+            onClick={() => navigate(`/post/${post._id + " featurepost"}`)}
              className="text-blue-600 text-sm font-medium hover:text-blue-700 flex items-center">
               Read More <ArrowRight className="w-4  h-4 ml-1" />
             </button>

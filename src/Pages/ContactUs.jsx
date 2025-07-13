@@ -7,10 +7,10 @@ import {
   Send,
   User,
   MessageSquare,
-  Building2,
-  AlertCircle,
 } from "lucide-react";
 import DownArrow from "../components/DownArrow";
+import OfficesLocationCard from "../components/ContactUs/OfficesLocationCard";
+import ContactInfoCard from "../components/ContactUs/ContactInfoCard";
 
 const ContactPage = () => {
   useEffect(() => {
@@ -72,54 +72,6 @@ const ContactPage = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: "Phone Numbers",
-      details: ["+91-120-4164460", "+91-9811255829"],
-      color: "blue",
-    },
-    {
-      icon: Mail,
-      title: "Email Address",
-      details: ["ahujaandahuja@gmail.com"],
-      color: "green",
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      details: ["Mon - Fri: 9:00 AM - 6:00 PM", "Sat: 9:00 AM - 2:00 PM"],
-      color: "purple",
-    },
-  ];
-
-  const offices = [
-    {
-      city: "Noida",
-      title: "CA Firm in Noida",
-      name: "NEXUS – Chartered Accountants",
-      address: [
-        "B-077, 7th Floor",
-        "ATS Bouquet",
-        "A2/2, Sector 132",
-        "Noida, (U.P) – 201304",
-      ],
-      color: "blue",
-    },
-    {
-      city: "Gurgaon",
-      title: "Gurgaon CA Firm",
-      name: "NEXUS, Chartered Accountants",
-      address: [
-        "26 B2 ,Ground Floor ",
-        "Spaze itech Tower",
-        "Sohna Road, Sector 49",
-        "Gurugram, Haryana 122002",
-      ],
-      color: "indigo",
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Header */}
@@ -143,28 +95,7 @@ const ContactPage = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Contact Information Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {contactInfo.map((info, index) => (
-            <div
-              key={index}
-              className={`bg-white rounded-xl  p-8 border-l-4 border-${info.color}-500 hover:shadow-xl transition-shadow duration-300`}
-            >
-              <div className="flex items-center mb-4">
-                <info.icon className={`h-8 w-8 text-${info.color}-500 mr-3`} />
-                <h3 className="text-xl font-bold text-gray-900">
-                  {info.title}
-                </h3>
-              </div>
-              <div className="space-y-2">
-                {info.details.map((detail, idx) => (
-                  <p key={idx} className="text-gray-700">
-                    {detail}
-                  </p>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <ContactInfoCard />
 
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12">
@@ -201,7 +132,7 @@ const ContactPage = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border focus:outline-none border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="Your full name"
                     />
                   </div>
@@ -223,7 +154,7 @@ const ContactPage = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 focus:outline-none rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -246,7 +177,7 @@ const ContactPage = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border focus:outline-none border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="+91-9876543210"
                     />
                   </div>
@@ -266,7 +197,7 @@ const ContactPage = () => {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="What is this regarding?"
                   />
                 </div>
@@ -285,8 +216,9 @@ const ContactPage = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   required
-                  rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  // cols="12"
+                  rows={15}
+                  className="w-full px-4 py-3 resize-none border focus:outline-none overflow-auto no-scrollbar border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="Please provide details about your query..."
                 />
               </div>
@@ -313,66 +245,7 @@ const ContactPage = () => {
           </div>
 
           {/* Office Locations */}
-          <div className="space-y-8">
-            <div className="flex items-center mb-6">
-              <Building2 className="h-8 w-8 text-green-600 mr-3" />
-              <h2 className="text-3xl font-bold text-gray-900">
-                Our Locations
-              </h2>
-            </div>
-
-            {offices.map((office, index) => (
-              <div
-                key={index}
-                className={`bg-white rounded-xl shadow-lg p-8 border-l-4 border-${office.color}-500 hover:shadow-xl transition-shadow duration-300`}
-              >
-                <div className="flex items-center mb-4">
-                  <MapPin className={`h-6 w-6 text-${office.color}-500 mr-3`} />
-                  <h3 className="text-xl font-bold text-gray-900">
-                    {office.city} Office
-                  </h3>
-                </div>
-
-                <h4 className="font-semibold text-gray-800 mb-3">
-                  {office.name}
-                </h4>
-
-                <div className="space-y-1">
-                  {office.address.map((line, idx) => (
-                    <p key={idx} className="text-gray-700">
-                      {line}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            ))}
-
-            {/* Additional Info */}
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
-              <h3 className="text-lg font-semibold text-blue-900 mb-3">
-                Need Professional Services?
-              </h3>
-              <p className="text-blue-800 mb-4">
-                We provide comprehensive chartered accountancy services across
-                Delhi NCR. Contact us for consultation on taxation, auditing,
-                company formation, and financial planning.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                  Tax Planning
-                </span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                  Auditing
-                </span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                  Company Formation
-                </span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                  Financial Planning
-                </span>
-              </div>
-            </div>
-          </div>
+          <OfficesLocationCard />
         </div>
       </div>
     </div>

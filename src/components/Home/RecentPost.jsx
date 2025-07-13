@@ -1,10 +1,12 @@
 import { Calendar, ChevronRight } from "lucide-react";
-import BlogContext from "../Context/Blogs";
+import BlogContext from "../..//Context/Blogs";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 const RecentPost = () => {
   const { recentPost, loading } = useContext(BlogContext);
-  if (loading) return <div>loading...</div>;
+  if (loading) return <div className="w-full text-2xl font-semibold text-center">
+        loading...
+      </div>
 
   const navigate = useNavigate();
   return (
@@ -33,7 +35,7 @@ const RecentPost = () => {
                 </span>
               </div>
               <ChevronRight
-                onClick={() => navigate(`/blog/${post._id + " recentpost"}`)}
+                onClick={() => navigate(`/post/${post._id + " recentpost"}`)}
                 className="w-5 h-5 cursor-pointer hover:text-blue-500 text-gray-400 ml-4"
               />
             </div>

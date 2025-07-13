@@ -1,6 +1,7 @@
 import { Globe } from "lucide-react";
+import { AboutPageSectors } from "../../Store/Data.js";
 
-const IndustrySectorCard = ({sectors}) => { // used in aboutUs.jsx
+const IndustrySectorCard = () => { // used in aboutUs.jsx
   return (
     <div className="bg-white rounded-xl  p-8 mb-16">
       <div className="flex items-center mb-6">
@@ -10,7 +11,7 @@ const IndustrySectorCard = ({sectors}) => { // used in aboutUs.jsx
         </h2>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {sectors.map((sector, index) => (
+        {AboutPageSectors.map((sector, index) => (
           <div
             key={index}
             className="p-4 bg-purple-50 rounded-lg border border-purple-200 text-center"
