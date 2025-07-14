@@ -8,7 +8,7 @@ const HeroSection = () => {
     <div
       style={{
         backgroundImage:
-          'url("https://cdn.prod.website-files.com/6344c9cef89d6f2270a38908/65444139fa2fe84fa29c749e_What%20is%20Proptech%20(Real%20Estate%20Tech)%20Ultimate%20Guide.webp")',
+          'url("https://taxcellent.in/wp-content/uploads/2021/10/banner-three.webp")',
       }}
       className=" h-[80svh] bg-no-repeat  bg-center bg-cover from-blue-900 via-indigo-900 to-purple-900 text-white relative overflow-hidden"
     >
@@ -16,11 +16,10 @@ const HeroSection = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Chartered Accountants in Delhi
+           Empowering <span className="bg-amber-600 text-black px-3 " >Businesses</span> Across India with Expert <span className="text-black " >C</span>hartered <span className="text-black  " >A</span>ccounting
           </h1>
-          <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-4xl mx-auto">
-            Full-service CA firm with over two decades of experience, providing
-            high-quality professional services across India
+          <p className="text-xl md:text-2xl text- mb-8 max-w-4xl mx-auto">
+           Two decades of experience. Pan-India reach. Trusted by startups to enterprises.From tax advisory to audit, we deliver compliance and clarity across India.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button

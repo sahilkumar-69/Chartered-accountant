@@ -1,4 +1,4 @@
-import { Award } from "lucide-react";
+import { Award, Mail } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import BlogContext from "../Context/Blogs";
 import { useContext } from "react";
@@ -40,7 +40,7 @@ const Footer = () => {
               }}
               className="hover:underline cursor-pointer hover:text-white"
             >
-              Service
+              Services
             </li>
             <li
               onClick={() => {
@@ -125,16 +125,17 @@ const Footer = () => {
           <h3 className="font-semibold mt-4 mb-2">Email</h3>
           <Link
             to="mailTo:sahilkumar6939@gmail.com"
-            className="hover:underline text-gray-300"
+            className="hover:underline flex items-center justify-start gap-1  text-gray-300"
           >
-            nexus@gmail.com
+            <Mail size={15} />
+            <p className="pb-0.5" >nexus@gmail.com</p>
           </Link>
           <br className="my-1" />
           <Link
             to="/contact"
-            className="text-gray-300  cursor-pointer hover:underline mt-4 mb-2"
+            className="text-gray-300   cursor-pointer hover:underline mt-4 mb-2"
           >
-            Enquiry Form
+            Submit Query
           </Link>
         </div>
       </div>

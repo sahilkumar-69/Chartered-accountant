@@ -11,15 +11,28 @@ import DedicatedPostPage from "./Pages/PostPage";
 import DedicatedBlogPage from "./Pages/BlogPage";
 import DedicatedServicePage from "./Pages/DedicatedServicePage";
 import { Toaster } from "react-hot-toast";
+import WhatsappIcon from "./components/WhatsappIcon";
+import PopupForm from "./components/PopUp";
 
 function App() {
   return (
     <Router>
       <Navbar />
+      <div className="fixed bottom-5 right-5 z-50 bg-green-500 p-3 rounded-full shadow-lg hover:bg-green-600">
+        <a
+          href="https://wa.me/919211815556"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <WhatsappIcon size={28} color="white" />
+        </a>
+      </div>
+
       <div className="pt-[76px]">
         <Toaster position="top-right" className="w-auto" />
         <Routes>
           <Route path="/" element={<Homepage />} />
+          {/* <Route path="/nav" element={} /> */}
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/blog" element={<BlogPage />} />
@@ -30,6 +43,7 @@ function App() {
         </Routes>
         <Footer />
       </div>
+      <PopupForm />
     </Router>
   );
 }
