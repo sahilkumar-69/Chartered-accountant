@@ -46,7 +46,7 @@ export default function DedicatedBlogPage() {
   );
 }
 
-function BlogComponent({ title, blogContent }) {
+function BlogComponent({ title, author, createdAt, blogContent }) {
   return (
     <article className="p-6 sm:p-8 md:p-10 lg:p-12">
       {/* Header */}
@@ -67,11 +67,10 @@ function BlogComponent({ title, blogContent }) {
                 clipRule="evenodd"
               />
             </svg>
-            By{" "}
-            <span className="font-medium ml-1 text-blue-600">Ankit Yadav</span>
+            By <span className="font-medium ml-1 text-blue-600">{author}</span>
           </p>
-          <span className="hidden sm:inline-block text-gray-400">•</span>
-          <p className="flex items-center">
+          {/* <span className="hidden sm:inline-block text-gray-400">•</span> */}
+          {/* <p className="flex items-center">
             <svg
               className="w-4 h-4 mr-1 text-blue-500"
               fill="currentColor"
@@ -83,8 +82,8 @@ function BlogComponent({ title, blogContent }) {
                 clipRule="evenodd"
               />
             </svg>
-            <time>23/03/2003</time>
-          </p>
+            <time dateTime={createdAt}>{createdAt.split("T")[0]}</time>
+          </p> */}
         </div>
       </header>
 

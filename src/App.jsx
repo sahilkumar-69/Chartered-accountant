@@ -10,12 +10,14 @@ import ServicesPage from "./Pages/ServicePage";
 import DedicatedPostPage from "./Pages/PostPage";
 import DedicatedBlogPage from "./Pages/BlogPage";
 import DedicatedServicePage from "./Pages/DedicatedServicePage";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <Router>
       <Navbar />
       <div className="pt-[76px]">
+        <Toaster position="top-right" className="w-auto" />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/services" element={<ServicesPage />} />

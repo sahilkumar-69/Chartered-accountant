@@ -7,6 +7,7 @@ const BlogProvider = ({ children }) => {
   const [service, setService] = useState([]);
   const [featuredPost, setFeaturedPost] = useState([]);
   const [recentPost, setRecentPost] = useState([]);
+  const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchBlogs = async () => {
@@ -17,6 +18,13 @@ const BlogProvider = ({ children }) => {
       const blogData = await blogResp.json();
 
       setBlogs(blogData);
+
+      const citiesResp = await fetch(
+        "https://cawebsite-gg5g.onrender.com/api/get-city"
+      );
+      const citiesData = await citiesResp.json();
+
+      setCities(citiesData);
 
       const serviceResp = await fetch(
         "https://cawebsite-gg5g.onrender.com/api/get-caservice"
@@ -51,7 +59,7 @@ const BlogProvider = ({ children }) => {
 
   return (
     <BlogContext.Provider
-      value={{ recentPost, service, featuredPost, blogs, loading }}
+      value={{ recentPost, cities, service, featuredPost, blogs, loading }}
     >
       {children}
     </BlogContext.Provider>

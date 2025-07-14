@@ -23,12 +23,12 @@ const Footer = () => {
         </div>
 
         {/* Column 2: Post Categories */}
-        <div>
+        <div className="ml-[70px]">
           <h3 className="font-semibold mb-2">All pages</h3>
           <ul className="space-y-1 text-gray-300">
             <li
               onClick={() => {
-                navigate("/contact");
+                navigate("/");
               }}
               className="hover:underline cursor-pointer hover:text-white"
             >
@@ -36,7 +36,7 @@ const Footer = () => {
             </li>
             <li
               onClick={() => {
-                navigate("/contact");
+                navigate("/services");
               }}
               className="hover:underline cursor-pointer hover:text-white"
             >
@@ -44,7 +44,7 @@ const Footer = () => {
             </li>
             <li
               onClick={() => {
-                navigate("/contact");
+                navigate("/about");
               }}
               className="hover:underline cursor-pointer hover:text-white"
             >
@@ -52,7 +52,7 @@ const Footer = () => {
             </li>
             <li
               onClick={() => {
-                navigate("/contact");
+                navigate("/blog");
               }}
               className="hover:underline cursor-pointer hover:text-white"
             >
@@ -73,7 +73,10 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold mb-2">Our Services</h3>
           <ul className="space-y-1 text-gray-300">
-            {service.data &&
+            {loading ? (
+              <div>Loading...</div>
+            ) : (
+              service.data &&
               service.data.length > 0 &&
               service.data.map((servi) => (
                 <li
@@ -85,7 +88,8 @@ const Footer = () => {
                 >
                   {servi.serviceName}
                 </li>
-              ))}
+              ))
+            )}
           </ul>
         </div>
 

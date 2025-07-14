@@ -9,8 +9,11 @@ const BlogPost = ({
   totalPages,
   setCurrentPage,
   currentPage,
-  navigate
+  navigate,
+  loading1,
 }) => {
+  if (loading1) return <div className="text-center text-2xl" >loading...</div>;
+
   return (
     <section className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,15 +45,17 @@ const BlogPost = ({
                     </span>
                     <span className="flex items-center gap-1">
                       <Clock className="h-4 w-4" />
-                      {post.readTime}
+                      {post.readTime} Mins
                     </span>
                   </div>
                   <h4 className="text-lg font-semibold text-gray-900 mb-3 hover:text-blue-900 transition-colors line-clamp-2">
                     {post.title}
                   </h4>
-                  <p className="text-gray-600 mb-4 line-clamp-3">
-                    {post.blogContent}
-                  </p>
+                  <p
+                    dangerouslySetInnerHTML={{ __html: post.blogContent }}
+                    className="text-gray-600 mb-4 line-clamp-3"
+                  />
+
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <User className="h-4 w-4 text-gray-400" />

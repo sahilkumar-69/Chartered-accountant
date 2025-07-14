@@ -11,6 +11,7 @@ import {
 import DownArrow from "../components/DownArrow";
 import OfficesLocationCard from "../components/ContactUs/OfficesLocationCard";
 import ContactInfoCard from "../components/ContactUs/ContactInfoCard";
+import toast from "react-hot-toast";
 
 const ContactPage = () => {
   useEffect(() => {
@@ -36,37 +37,38 @@ const ContactPage = () => {
   };
 
   const handleSubmit = async () => {
-    // let data;
     setIsSubmitting(true);
-    console.log(formData);
+
     try {
-      const resp = await fetch("http://localhost:3003/api/contact-us", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ formData }),
+      const resp = await fetch(
+        "https://cawebsite-gg5g.onrender.com/api/contact-us",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (resp.status == 200) {
+        toast.success("Query submitted");
+      } else {
+        toast.error("try after some time ");
+      }
+
+      setIsSubmitting(false);
+      setSubmitMessage(
+        "Thank you for your message! We will get back to you soon."
+      );
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
       });
-
-      console.log(resp);
-
-      const data = await resp.json();
-
-      console.log(data);
-      // Simulate form submission
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setSubmitMessage(
-          "Thank you for your message! We will get back to you soon."
-        );
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: "",
-        });
-      }, 2000);
+      // }, 2000);
     } catch (error) {
       console.log(error);
     }

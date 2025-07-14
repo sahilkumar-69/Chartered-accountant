@@ -1,5 +1,4 @@
 import { IndustryServedIndustries } from "../../Store/Data.js";
-import OfficesCard from "../AboutUs/OfficesCard";
 
 const IndustryServed = () => {
   return (
@@ -27,7 +26,6 @@ const IndustryServed = () => {
           ))}
         </div>
       </div>
-      <OfficesCard />
     </section>
   );
 };

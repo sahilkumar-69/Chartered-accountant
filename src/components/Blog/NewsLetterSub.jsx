@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const NewsLetterSub = () => {
   const [loading, setLoading] = useState(false);
@@ -19,6 +20,8 @@ const NewsLetterSub = () => {
 
     const data = await resp.json();
     setLoading(false);
+    setMail("");
+    toast.success("Subscribed");
 
     console.log("data", data);
   };
@@ -48,7 +51,7 @@ const NewsLetterSub = () => {
             onClick={handleSubmit}
             className="text-white hover:text-blue-900 px-6 py-3 rounded-lg font-medium hover:bg-white border-2 border-white transition-colors"
           >
-            {loading ? "Subscribing" : "Subscribe"}
+            Subscribe
           </button>
         </div>
       </div>

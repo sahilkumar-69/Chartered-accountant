@@ -1,7 +1,14 @@
 import { MapPin } from "lucide-react";
-import { AboutPageServiceAreaCities } from "../../Store/Data.js";
+// import { AboutPageServiceAreaCities } from "../../Store/Data.js";
+import { useContext } from "react";
+import BlogContext from "../../Context/Blogs.js";
+import { Link } from "react-router-dom";
 
 const ServiceAreas = () => {
+  const { cities, loading } = useContext(BlogContext);
+
+  if (loading) return <div className="text-center text-2xl">loading...</div>;
+
   return (
     <div className="bg-white rounded-xl p-8">
       <div className="flex items-center mb-6">
@@ -13,13 +20,15 @@ const ServiceAreas = () => {
         ensuring comprehensive coverage and accessibility:
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-        {AboutPageServiceAreaCities.map((city, index) => (
-          <div
+        { cities.data && cities.data.length>0 && cities.data.map((city, index) => (
+          <Link
+          to={`https://www.google.com/maps?q=${city.latitude},${city.longitude}`}
+          target="_blank"
             key={index}
-            className="p-3 bg-orange-50 rounded-lg border border-orange-200 text-center"
+            className="p-3 bg-orange-50 rounded-lg border hover:bg-gray-500  border-orange-200 text-center"
           >
-            <p className="text-gray-800 font-medium text-sm">{city}</p>
-          </div>
+            <p className=" text-black hover:text-white font-medium text-sm">{city.name}</p>
+          </Link>
         ))}
       </div>
       <p className="text-gray-600 mt-6 text-center italic">
