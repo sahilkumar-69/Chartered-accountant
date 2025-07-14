@@ -2,7 +2,8 @@ const HeroSection = () => {
   return (
     <div
       style={{
-        backgroundImage: "url('src/assets/about (2).jpg')",
+        backgroundImage:
+          "url('https://img.freepik.com/premium-photo/sleek-noir-elegance-black-office-background-photo_960396-251107.jpg')",
       }}
       className="bg-no-repeat bg-cover  h-[80svh] from-blue-900 to-indigo-900 text-white"
     >

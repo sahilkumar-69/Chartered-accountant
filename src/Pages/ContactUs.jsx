@@ -81,7 +81,8 @@ const ContactPage = () => {
 
       <div
         style={{
-          backgroundImage: 'url("src/assets/contactus.webp")',
+          backgroundImage:
+            'url("https://www.shutterstock.com/image-vector/contact-us-customer-support-hotline-600nw-2561218445.jpg")',
         }}
         className="bg-no-repeat  bg-center bg-cover  h-[80svh] from-blue-900 to-indigo-900 text-white"
       >
